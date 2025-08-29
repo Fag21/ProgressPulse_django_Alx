@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - ProgressPulse{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <h1>Welcome, {{ user.username }}!</h1>
+    <p>This is your personal dashboard. Here you'll be able to track your habits and journal entries.</p>
+    
+    <div class="dashboard-sections">
+        <div class="section">
+            <h2>Your Habits</h2>
+            <p>You haven't created any habits yet.</p>
+            <a href="#" class="btn btn-secondary">Create Your First Habit</a>
+        </div>
+        
+        <div class="section">
+            <h2>Today's Journal</h2>
+            <p>You haven't written a journal entry today.</p>
+            <a href="#" class="btn btn-secondary">Write Journal Entry</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

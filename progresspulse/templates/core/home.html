@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="hero">
+    <h1>Track Your Progress, Build Better Habits</h1>
+    <p>ProgressPulse helps you develop positive habits and reflect on your daily journey.</p>
+    {% if not user.is_authenticated %}
+        <div class="cta-buttons">
+            <a href="{% url 'admin:login' %}" class="btn btn-primary">Get Started</a>
+        </div>
+    {% else %}
+        <div class="cta-buttons">
+            <a href="{% url 'core:dashboard' %}" class="btn btn-primary">Go to Dashboard</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
