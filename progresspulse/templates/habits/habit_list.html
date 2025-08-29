@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="habits-container">
+    <h1>Your Habits</h1>
+    <a href="{% url 'habits:habit_create' %}" class="btn btn-primary">Create New Habit</a>
+    
+    {% if habits %}
+        <ul class="habits-list">
+            {% for habit in habits %}
+                <li class="habit-item">
+                    <h3>{{ habit.name }}</h3>
+                    <p>{{ habit.description }}</p>
+                    <div class="habit-actions">
+                        <a href="{% url 'habits:habit_update' habit.pk %}" class="btn btn-secondary">Edit</a>
+                        <a href="{% url 'habits:habit_delete' habit.pk %}" class="btn btn-danger">Delete</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You haven't created any habits yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

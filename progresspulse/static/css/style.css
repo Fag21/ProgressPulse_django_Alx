@@ -181,3 +181,96 @@ footer {
     text-align: center;
     margin-top: 1rem;
 }
+/* Habits */
+.habits-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.habits-list {
+    list-style: none;
+    margin-top: 2rem;
+}
+
+.habit-item {
+    background-color: white;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.habit-item h3 {
+    margin-bottom: 0.5rem;
+    color: #4a6fa5;
+}
+
+.habit-item p {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.habit-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Forms */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Confirm delete */
+.confirm-delete {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.confirm-delete h1 {
+    color: #dc3545;
+    margin-bottom: 1rem;
+}
+
+.confirm-delete p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
