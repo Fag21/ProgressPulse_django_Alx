@@ -5,19 +5,45 @@
 {% block content %}
 <div class="dashboard">
     <h1>Welcome, {{ user.username }}!</h1>
-    <p>This is your personal dashboard. Here you'll be able to track your habits and journal entries.</p>
+    <p>Today is {{ today }}. Track your progress and reflect on your day.</p>
     
     <div class="dashboard-sections">
         <div class="section">
-            <h2>Your Habits</h2>
-            <p>You haven't created any habits yet.</p>
-            <a href="#" class="btn btn-secondary">Create Your First Habit</a>
+            <h2>Today's Habits</h2>
+            {% if habits %}
+                <ul class="habits-list">
+                    {% for habit in habits %}
+                        <li class="habit-item">
+                            <h3>{{ habit.name }}</h3>
+                            <p>{{ habit.description }}</p>
+                            <button class="btn btn-secondary">Mark Complete</button>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>You haven't created any habits yet.</p>
+                <a href="{% url 'habits:habit_create' %}" class="btn btn-secondary">Create Your First Habit</a>
+            {% endif %}
         </div>
         
         <div class="section">
             <h2>Today's Journal</h2>
-            <p>You haven't written a journal entry today.</p>
-            <a href="#" class="btn btn-secondary">Write Journal Entry</a>
+            {% if todays_entry %}
+                <div class="todays-entry">
+                    <h3>Your entry for today:</h3>
+                    <div class="entry-preview">
+                        {{ todays_entry.content|truncatewords:30 }}
+                    </div>
+                    <a href="{% url 'journals:entry_update' todays_entry.pk %}" class="btn btn-secondary">Edit Entry</a>
+                </div>
+            {% else %}
+                <p>You haven't written a journal entry today.</p>
+                <a href="{% url 'journals:entry_create' %}" class="btn btn-secondary">Write Journal Entry</a>
+            {% endif %}
+            
+            <div class="journal-links">
+                <p><a href="{% url 'journals:entry_list' %}">View all journal entries →</a></p>
+            </div>
         </div>
     </div>
 </div>

@@ -274,3 +274,43 @@ footer {
     margin-bottom: 2rem;
     font-size: 1.1rem;
 }
+/* Dashboard updates */
+.todays-entry {
+    margin-bottom: 1.5rem;
+}
+
+.entry-preview {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+}
+
+.journal-links {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.habits-list {
+    list-style: none;
+    margin: 1rem 0;
+}
+
+.habits-list .habit-item {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+}
+
+.habits-list .habit-item h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+}
+
+.habits-list .habit-item p {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    color: #666;
+}
