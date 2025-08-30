@@ -314,3 +314,119 @@ footer {
     font-size: 0.9rem;
     color: #666;
 }
+/* Habit completion styles */
+.habit-item.completed {
+    opacity: 0.7;
+    border-left: 4px solid #28a745;
+}
+
+.habit-item.completed h3 {
+    text-decoration: line-through;
+    color: #28a745;
+}
+
+.btn-complete {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-incomplete {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Dashboard progress summary */
+.progress-summary {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.progress-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: conic-gradient(#28a745 0% var(--percentage), #e9ecef var(--percentage) 100%);
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.progress-circle::before {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.progress-text {
+    position: relative;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Dashboard habit list */
+.dashboard-sections .habits-list {
+    list-style: none;
+    margin: 1rem 0;
+}
+
+.dashboard-sections .habit-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+.habit-check {
+    margin-right: 1rem;
+}
+
+.check-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #6c757d;
+    background: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.check-btn.checked {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: white;
+}
+
+.habit-info {
+    flex-grow: 1;
+}
+
+.habit-info h3 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1rem;
+}
+
+.habit-info p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Date display */
+.date-display {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 1rem;
+}
