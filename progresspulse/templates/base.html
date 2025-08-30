@@ -29,9 +29,35 @@
     </main>
     
     <footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>ProgressPulse</h3>
+            <p>Your companion for personal growth and habit tracking.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="{% url 'core:home' %}">Home</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'core:dashboard' %}">Dashboard</a></li>
+                    <li><a href="{% url 'core:calendar' %}">Progress Calendar</a></li>
+                    <li><a href="{% url 'habits:habit_list' %}">My Habits</a></li>
+                    <li><a href="{% url 'journals:entry_list' %}">My Journal</a></li>
+                {% else %}
+                    <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                    <li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>About</h4>
+            <p>ProgressPulse is a self-development tool designed to help you build better habits and track your personal growth journey.</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
         <p>&copy; 2023 ProgressPulse. Built with Django.</p>
-    </footer>
-    
+    </div>
+</footer>
     <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
