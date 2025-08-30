@@ -65,4 +65,21 @@
         </div>
     </div>
 </div>
+<div class="quick-links">
+    <h2>Quick Access</h2>
+    <div class="link-cards">
+        <a href="{% url 'core:calendar' %}" class="link-card">
+            <h3>View Progress Calendar</h3>
+            <p>See your habit and journal history</p>
+        </a>
+        <a href="{% url 'habits:habit_list' %}" class="link-card">
+            <h3>Manage Habits</h3>
+            <p>Add, edit, or remove habits</p>
+        </a>
+        <a href="{% url 'journals:entry_list' %}" class="link-card">
+            <h3>Journal Entries</h3>
+            <p>Read and edit your journal</p>
+        </a>
+    </div>
+</div>
 {% endblock %}
