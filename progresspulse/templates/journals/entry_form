@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-container">
+    <h1>{% if entry %}Edit{% else %}New{% endif %} Journal Entry</h1>
+    <p class="entry-date">Date: {{ entry.date|default:today }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="content">Your thoughts:</label>
+            <textarea id="content" name="content" rows="10">{{ entry.content|default:'' }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Entry</button>
+        <a href="{% url 'journals:entry_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

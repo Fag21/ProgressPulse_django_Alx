@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="journals-container">
+    <h1>Your Journal Entries</h1>
+    <a href="{% url 'journals:entry_create' %}" class="btn btn-primary">Write New Entry</a>
+    
+    {% if entries %}
+        <ul class="entries-list">
+            {% for entry in entries %}
+                <li class="entry-item">
+                    <div class="entry-header">
+                        <h3>{{ entry.date }}</h3>
+                        <div class="entry-actions">
+                            <a href="{% url 'journals:entry_update' entry.pk %}" class="btn btn-secondary">Edit</a>
+                            <a href="{% url 'journals:entry_delete' entry.pk %}" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                    <div class="entry-content">
+                        {{ entry.content|linebreaks }}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You haven't written any journal entries yet.</p>
+    {% endif %}
+</div>
+{% endblock %}
