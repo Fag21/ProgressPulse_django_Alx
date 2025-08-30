@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Progress Calendar - ProgressPulse{% endblock %}
+
+{% block content %}
+<div class="calendar-container">
+    <h1>Your Progress Calendar</h1>
+    
+    <div class="calendar-nav">
+        <a href="{% url 'core:calendar_month' prev_year prev_month %}" class="btn btn-secondary">&larr; Previous</a>
+        <h2>{{ month_name }} {{ year }}</h2>
+        <a href="{% url 'core:calendar_month' next_year next_month %}" class="btn btn-secondary">Next &rarr;</a>
+    </div>
+    
+    <div class="calendar-legend">
+        <div class="legend-item">
+            <span class="color-dot habit-dot"></span>
+            <span>Habit completed</span>
+        </div>
+        <div class="legend-item">
+            <span class="color-dot journal-dot"></span>
+            <span>Journal entry</span>
+        </div>
+        <div class="legend-item">
+            <span class="color-dot both-dot"></span>
+            <span>Both habit and journal</span>
+        </div>
+    </div>
+    
+    <table class="progress-calendar">
+        <thead>
+            <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for week in calendar %}
+            <tr>
+                {% for day in week %}
+                <td class="calendar-day {% if day.day == today.day and month == today.month and year == today.year %}today{% endif %} {% if day.status %}{{ day.status }}{% endif %}">
+                    {% if day.day != 0 %}
+                        <div class="day-number">{{ day.day }}</div>
+                        <div class="day-status">
+                            {% if day.status == 'habit' %}
+                                <span class="color-dot habit-dot"></span>
+                            {% elif day.status == 'journal' %}
+                                <span class="color-dot journal-dot"></span>
+                            {% elif day.status == 'both' %}
+                                <span class="color-dot both-dot"></span>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <div class="calendar-actions">
+        <a href="{% url 'core:calendar' %}" class="btn btn-primary">Current Month</a>
+        <a href="{% url 'core:dashboard' %}" class="btn btn-secondary">Back to Dashboard</a>
+    </div>
+</div>
+{% endblock %}
