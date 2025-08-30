@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
-
 class HabitsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'habits'
+    name = 'apps.habits'  # Change this to the full path
+    verbose_name = 'Habits'
