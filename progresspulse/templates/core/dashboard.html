@@ -7,19 +7,37 @@
     <h1>Welcome, {{ user.username }}!</h1>
     <p>Today is {{ today }}. Track your progress and reflect on your day.</p>
     
+    <div class="progress-summary">
+        <h2>Today's Progress</h2>
+        <div class="progress-circle" data-percentage="{{ completion_percentage }}">
+            <span class="progress-text">{{ completed_habits }}/{{ total_habits }}</span>
+        </div>
+        <p>{{ completion_percentage|floatformat:0 }}% of habits completed today</p>
+    </div>
+    
     <div class="dashboard-sections">
         <div class="section">
             <h2>Today's Habits</h2>
             {% if habits %}
                 <ul class="habits-list">
                     {% for habit in habits %}
-                        <li class="habit-item">
-                            <h3>{{ habit.name }}</h3>
-                            <p>{{ habit.description }}</p>
-                            <button class="btn btn-secondary">Mark Complete</button>
+                        <li class="habit-item {% if habit.completed_today %}completed{% endif %}">
+                            <div class="habit-check">
+                                <form action="{% url 'habits:toggle_completion' habit.pk %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="check-btn {% if habit.completed_today %}checked{% endif %}">
+                                        {% if habit.completed_today %}✓{% endif %}
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="habit-info">
+                                <h3>{{ habit.name }}</h3>
+                                <p>{{ habit.description }}</p>
+                            </div>
                         </li>
                     {% endfor %}
                 </ul>
+                <p><a href="{% url 'habits:habit_list' %}">Manage all habits →</a></p>
             {% else %}
                 <p>You haven't created any habits yet.</p>
                 <a href="{% url 'habits:habit_create' %}" class="btn btn-secondary">Create Your First Habit</a>
